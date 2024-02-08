@@ -13,13 +13,18 @@ if(
 return response.status(400).send({
     message: 'Send all required fields:title,author',});
 }
-const newBook ={
-    title:request.body.title,
-    author:request.body.author,
-    publishYear:request.body.publishYear,
-    genre:request.body.genre,
-    isbn:request.body.isbn
-}
+const newBook = {
+    title: request.body.title ,
+    author: request.body.author ,
+    publishYear: request.body.publishYear , // Default publish year
+    genre: request.body.genre ,
+    isbn: request.body.isbn ,
+    image: request.body.image , // Default image path
+    note: request.body.note ,
+    status: request.body.status , // Default value for isRead
+    completeDate: request.body.completeDate  // Default value for completeDate
+};
+
 const book = await Book.create(newBook);
 return response.status(201).send(book);
 
